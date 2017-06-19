@@ -17,48 +17,48 @@ node(""){
     env.OMAR_COMMON_PROPERTIES="${workspaceDir}/${omarCommonProjName}/omar-common-properties.gradle"
     env.O2_DEV_BUILD=pwd()
 
-    stage("Checkout"){
-        dir("ossim-ci") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/ossim-ci.git"
-        }
-        
-        dir(appName) {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/${appName}.git"
-        }
-        
-        dir("omar-stager") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-stager.git"
-        }
-        
-        dir("omar-oms") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-oms.git"
-        }
-        
-        dir("omar-core") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-core.git"
-        }
-        
-        dir("omar-openlayers") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-openlayers.git"
-        }
-        
-        dir("omar-ingest-metrics") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-ingest-metrics.git"
-        }
-        
-        dir("omar-hibernate-spatial") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-hibernate-spatial.git"
-        }
-
-
-        dir(omarCommonProjName) {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/${omarCommonProjName}.git"
-        }
-
-        notifyObj = load "${workspaceDir}/ossim-ci/jenkins/pipeline/notify.groovy"
-    }
-
     try {
+      stage("Checkout"){
+          dir("ossim-ci") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/ossim-ci.git"
+          }
+          
+          dir(appName) {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/${appName}.git"
+          }
+          
+          dir("omar-stager") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-stager.git"
+          }
+          
+          dir("omar-oms") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-oms.git"
+          }
+          
+          dir("omar-core") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-core.git"
+          }
+          
+          dir("omar-openlayers") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-openlayers.git"
+          }
+          
+          dir("omar-ingest-metrics") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-ingest-metrics.git"
+          }
+          
+          dir("omar-hibernate-spatial") {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/omar-hibernate-spatial.git"
+          }
+
+
+          dir(omarCommonProjName) {
+              git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/${omarCommonProjName}.git"
+          }
+
+          notifyObj = load "${workspaceDir}/ossim-ci/jenkins/pipeline/notify.groovy"
+      }
+
       stage ("Publish Plugin Artifactory")
       {
 
