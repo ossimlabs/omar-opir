@@ -15,17 +15,8 @@ node(""){
     def appName = "omar-opir"
     def omarCommonProjName = "omar-common"
     env.OMAR_COMMON_PROPERTIES="${workspaceDir}/${omarCommonProjName}/omar-common-properties.gradle"
+    env.O2_DEV_BUILD=pwd()
 
-include 'omar-opir-app',
-        'omar-opir-plugin',
-        'omar-stager-plugin',
-        'omar-oms-plugin',
-        'omar-core-plugin',
-        'omar-openlayers-plugin',
-        'omar-ingest-metrics-plugin',
-        'omar-hibernate-spatial-plugin'
-
-project(':omar-opir-app').projectDir = "${O2_DEV_HOME}/omar-opir/apps/omar-opir-app" as File
     stage("Checkout"){
         dir("ossim-ci") {
             git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/ossim-ci.git"
