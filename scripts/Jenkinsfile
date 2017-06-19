@@ -15,7 +15,7 @@ node(""){
     def appName = "omar-opir"
     def omarCommonProjName = "omar-common"
     env.OMAR_COMMON_PROPERTIES="${workspaceDir}/${omarCommonProjName}/omar-common-properties.gradle"
-    env.O2_DEV_BUILD=pwd()
+    env.O2_DEV_HOME=pwd()
 
     try {
       stage("Checkout"){
@@ -110,7 +110,7 @@ node(""){
         currentBuild.result = "FAILED"
         notifyObj?.notifyFailed()
     }
-//  stage("Clean Workspace"){
-//     step([$class: 'WsCleanup'])
-//  }
+  stage("Clean Workspace"){
+     step([$class: 'WsCleanup'])
+  }
 }
