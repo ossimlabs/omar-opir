@@ -1,3 +1,3 @@
 # omar-opir
 
-[![Build Status](https://jenkins.radiantbluecloud.com/buildStatus/icon?job=omar-opir-dev)]()
+[![Build Status](https://jenkins.ossim.io/buildStatus/icon?job=omar-opir-dev)]()
