@@ -12,6 +12,4 @@ dependencies {
     if ( ! System.getenv('O2_INLINE_BUILD') ) {
        compile "io.ossim.omar.plugins:omar-stager-core-plugin:+"
     }
-
-    compile group: 'com.vividsolutions', name: 'jts', version: '1.13'
 }
