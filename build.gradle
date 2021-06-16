@@ -12,7 +12,7 @@ buildscript {
         classpath "org.grails.plugins:hibernate5:${hibernate5PluginVersion}"
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:${webdriverGradlePluginVersion}"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:${assetPipelineVersion}"
-		classpath "io.ossim:gradleDefaults:${ gradleDefaultsVersion }"
+		//classpath "io.ossim:gradleDefaults:${ gradleDefaultsVersion }"
 		classpath "com.bmuschko:gradle-docker-plugin:${gradleDockerPluginVersion}"
     }
 }
@@ -28,8 +28,8 @@ subprojects { project ->
 	boolean isGrailsPlugin = project.name.endsWith( '-plugin' )
 	boolean isGrailsProject = isGrailsApp || isGrailsPlugin
 
-    io.ossim.gradleDefaults.Variables.setAdditionalVariables(project)
-    io.ossim.gradleDefaults.Variables.setVersionVariables(project)
+    //io.ossim.gradleDefaults.Variables.setAdditionalVariables(project)
+    //io.ossim.gradleDefaults.Variables.setVersionVariables(project)
     project.version "${buildVersion}-${buildVersionTag}"
     project.group groupName
 
@@ -56,7 +56,7 @@ subprojects { project ->
                 openshiftProjectName =  getConfigurationProperty( 'OPENSHIFT_PROJECT_NAME', 'openshiftProjectName' )
             }
 
-            io.ossim.gradleDefaults.Openshift.addOpenshiftTasks(
+           /*io.ossim.gradleDefaults.Openshift.addOpenshiftTasks(
                 project, 
                 openshiftUrl, 
                 openshiftUsername, 
@@ -66,7 +66,7 @@ subprojects { project ->
                 dockerRegistryUrl, 
                 dockerImageName, 
                 dockerImageTag
-            )
+            )*/
 
             docker {
                 registryCredentials {
@@ -121,8 +121,8 @@ subprojects { project ->
                 jarDestination = "${project.projectDir}/build/libs/${project.name}-${version}.jar"
             }
 
-            io.ossim.gradleDefaults.Publications.addPublication(project, groupName, name, "${buildVersion}-${buildVersionTag}")
-            io.ossim.gradleDefaults.Publications.addRepository(project, mavenPublishUrl, mavenRepoUsername, mavenRepoPassword)             
+            //io.ossim.gradleDefaults.Publications.addPublication(project, groupName, name, "${buildVersion}-${buildVersionTag}")
+            //io.ossim.gradleDefaults.Publications.addRepository(project, mavenPublishUrl, mavenRepoUsername, mavenRepoPassword)             
         }
 
         apply plugin:"asset-pipeline"
